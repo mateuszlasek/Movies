@@ -33,13 +33,6 @@ class Movie
     //#[Assert\NotBlank]
     private ?string $imagePath = null;
 
-    #[ORM\ManyToMany(targetEntity: Actor::class, inversedBy: 'movies')]
-    private Collection $actors;
-
-    public function __construct()
-    {
-        $this->actors = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -90,30 +83,6 @@ class Movie
     public function setImagePath(?string $imagePath): static
     {
         $this->imagePath = $imagePath;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Actor>
-     */
-    public function getActors(): Collection
-    {
-        return $this->actors;
-    }
-
-    public function addActor(Actor $actor): static
-    {
-        if (!$this->actors->contains($actor)) {
-            $this->actors->add($actor);
-        }
-
-        return $this;
-    }
-
-    public function removeActor(Actor $actor): static
-    {
-        $this->actors->removeElement($actor);
 
         return $this;
     }
