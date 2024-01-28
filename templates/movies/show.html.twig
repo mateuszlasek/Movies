@@ -1,0 +1,70 @@
+{% extends "./base.html.twig" %}
+
+{% block body %}
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+    </head>
+    <div class="sm:w-3/5 w-4/5 mx-auto">
+        <h1 class="pt-20 pb-10 sm:text-5xl md:text-7xl text-4xl font-bold text-center ">
+            {{ movie.title }}
+        </h1>
+
+        <img src="{{ movie.imagePath }}" class="rounded-xl w-full shadow-xl" alt="Movie Image"/>
+
+        <p class="text-xl py-6">
+            {{ movie.description }}
+        </p>
+
+        {% if app.user %}
+            <a href="/movies/edit/{{ movie.id }}" class="bg-green-500 font-bold py-2 px-4 rounded transition-all hover:bg-green-300">
+                Edit Movie
+            </a>
+
+            <a href="/movies/delete/{{ movie.id }}" class="bg-red-500 font-bold py-2 px-4 ml-6 rounded transition-all hover:bg-red-300">
+                Delete Movie
+            </a>
+        {% endif %}
+
+        <div x-data="{ isOpen: false }" class="mt-8">
+            {% if app.user %}
+                <button @click="isOpen = !isOpen" class="bg-blue-500 text-white font-bold py-2 px-4 rounded transition-all hover:bg-blue-700">
+                    Add Review
+                </button>
+
+                <form x-show="isOpen" x-cloak action="/movies/{{ movie.id }}" method="post" class="mt-4">
+                    <div class="mb-4">
+                        <label for="rating" class="block text-gray-700 text-sm font-bold mb-2">
+                            Your Rating
+                        </label>
+                        {{ form_widget(ratingForm.rating, {'attr': {'class': 'appearance-none bg-gray-100 border-2 border-gray-200 rounded w-16 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500'}}) }}
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="content" class="block text-gray-700 text-sm font-bold mb-2">
+                            Your Review
+                        </label>
+                        {{ form_widget(ratingForm.content, {'attr': {'class': 'appearance-none bg-gray-100 border-2 border-gray-200 rounded w-full py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500'}}) }}
+                    </div>
+
+                    <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded transition-all hover:bg-blue-700">
+                        Add
+                    </button>
+                </form>
+            {% endif %}
+        </div>
+
+        {% if reviews is not empty %}
+            <h2 class="text-3xl font-bold mt-8">Reviews:</h2>
+            <ul class="list-none list-inside">
+                {% for review in reviews %}
+                    <li class="text-lg mt-2">
+                        <strong>{{ review.username }}</strong> - {{ review.rating }}/5
+                        <p>{{ review.content }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-lg mt-8">No reviews yet. Be the first to add a review!</p>
+        {% endif %}
+    </div>
+{% endblock %}
