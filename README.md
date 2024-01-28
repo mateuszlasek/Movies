@@ -19,13 +19,13 @@ Movies is a web application for managing and reviewing movies. It allows users t
 - TailwindCSS
 - and others
 
-  # Run code
-  git clone
-  composer install
-  npm install
-  npm install tailwindcss postcss postcss-loader postcss-import postcss-preset-env --save-dev
-  npm run build
-  symfony console doctrine:database:create
-  symfony console doctrine:schema:create
-  symfony server:start
+## Run code
+- git clone
+- composer install
+- npm install
+- npm install tailwindcss postcss postcss-loader postcss-import postcss-preset-env --save-dev
+- npm run build
+- symfony console doctrine:database:create
+- symfony console doctrine:schema:create
+- symfony server:start
   
