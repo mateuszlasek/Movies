@@ -9,6 +9,7 @@ Movies is a web application for managing and reviewing movies. It allows users t
 - **Edit Movie:** Modify details of an existing movie.
 - **Delete Movie:** Remove a movie from the collection.
 - **Write Review:** Share your thoughts by writing a review for a specific movie.
+- **Login/Register:** Register your account.
 
 ## Technologies Used
 
