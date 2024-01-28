@@ -20,7 +20,7 @@ Movies is a web application for managing and reviewing movies. It allows users t
 - and others
 
 ## Run code
-- git clone
+- git clone *this repo*
 - composer install
 - npm install
 - npm install tailwindcss postcss postcss-loader postcss-import postcss-preset-env --save-dev
