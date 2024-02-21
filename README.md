@@ -2,7 +2,6 @@
 
 Movies is a web application for managing and reviewing movies. It allows users to add, edit, and delete movies, as well as write and view reviews for each movie.
 
-![obraz](https://github.com/mateuszlasek/Movies/assets/118616328/f40acabe-b9d8-43c9-b595-cd19a1840679)
 
 ## Features
 
